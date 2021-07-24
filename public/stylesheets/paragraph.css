@@ -1,0 +1,23 @@
+p {
+    padding-bottom: 25px;
+}
+
+p.hashtag {
+    font-size: 18px;
+    height: 0px;
+    width: 5%;
+}
+
+p.genre {
+    text-align: left;
+    height: 0px;
+    width: 60%;
+    text-decoration: none;
+    color: #000;
+}
+
+p.members {
+    text-align: right;
+    height: 0px;
+    width: 40%;
+}

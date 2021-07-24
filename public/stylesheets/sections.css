@@ -1,0 +1,29 @@
+section {
+    padding: 20px;
+}
+
+section.channels {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding-top: 0px;
+    width: 90%;
+}
+  
+section.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+section.channel_list {
+    display: flex;
+    flex-direction: column;
+    width: 91%;
+    padding: 0px;
+    margin: 0 auto;
+    height: 100px;
+}
+

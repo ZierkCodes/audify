@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <title>Welcome</title>
+</head>
+<body class="bcenter">
+    <section class="center">
+        <img src="<%= user.profile.avatar %>" alt="" style="width: 80px; height: 80px; border-radius: 50px;">
+        <h1>Welcome, <span class="au-primary"><%= user.profile.name.split(" ")[0] %>!</span></h1>
+        <p>For privacy, please set a username for this account.</p>
+        <input class="username" type="text" placeholder="Enter Username">
+        <p><small>Don't worry, you won't ever have to sign in with your username.</small></p>
+        <button><a href="/channels">Start Discovering</a></button>
+    </section>
+</body>
+</html>
