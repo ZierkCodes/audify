@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/welcome', (req, res, next) => {
-
+  res.render('welcome', {user: req.user})
 })
 
 function isLoggedIn(req, res, next) {

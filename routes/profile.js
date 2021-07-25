@@ -1,12 +1,11 @@
 import { Router } from 'express'
-// import * as profileCtrl from '../controllers/profile.js'
+import * as profileCtrl from '../controllers/profile.js'
 
 const router = Router()
 
 /* GET users listing. */
-router.get('/login', function(req, res, next) {
-  res.render('welcome', {user: req.user})
-})
+router.get('/login', profileCtrl.getUsername)
+router.post('/set', profileCtrl.setUsername)
 
 // router.put('/username')
 

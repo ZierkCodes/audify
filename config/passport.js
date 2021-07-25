@@ -9,18 +9,23 @@ passport.use(new SpotifyStrategy({
     callbackURL: process.env.SPOTIFY_CALLBACK
 },
 function (accessToken, refreshToken, profile, done) {
-    User.findOne({ spotifyId: profile.id }, function (err, user) {
+    console.log("PROFILE ID: " + profile.id)
+    User.findOne({ 'spotify_id': profile.id }, function (err, user) {
+      console.log("USER: ")
+      console.log(user)
       if (err) return done(err)
       if (user) {
         return done(null, user)
       } else {
+          console.log("Am I running?")
           console.log(profile)
         const newProfile = new Profile({
           name: profile.displayName,
+          username: '',
           avatar: profile.photos[0].value,
         })
         const newUser = new User({
-          spotifyId: profile.id,
+          spotify_id: profile.id,
           profile: newProfile._id
         })
         newProfile.save(function (err) {

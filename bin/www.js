@@ -13,6 +13,7 @@
  import os from 'os'
 
  import { Server } from 'socket.io'
+ import { users, getUsers } from '../utils/users.js'
  
  /**
   * Get port from environment and store in Express.
@@ -62,6 +63,7 @@ io.on('connection', (socket) => {
     socket.on('register-user', (data) => {
         console.log("IO.JS REGISTER USER")
         chatters[socket.id] = data.username
+        console.log("chatters")
         io.to(data.channel).emit('update-chatter-list', Object.keys(chatters).map(id => chatters[id]))
         io.to(data.channel).emit('user-enter')
     })
@@ -82,6 +84,7 @@ io.on('connection', (socket) => {
 
     socket.on('new_message', (data) => {
         console.log("IO.JS NEW MESSAGE")
+        console.log(data)
         io.sockets.to(data.channel).emit('new_message', {
               message: data.message, 
               username: data.username,
