@@ -27,6 +27,8 @@ import { router as indexRouter } from './routes/index.js'
 import { router as authRouter } from './routes/auth.js'
 import { router as profileRouter } from './routes/profile.js'
 import { router as channelRouter } from './routes/channel.js'
+import { router as channelsRouter } from './routes/channels.js'
+import { router as userRouter } from './routes/user.js'
 // import { router as channelRouter } from './routes/channel.js'
 // import { router as reviewsRouter } from './routes/reviews.js'
 // import { router as messagesRouter } from './routes/messages.js'
@@ -44,13 +46,7 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-io.on('connection', socket => {
-  socket.emit('message', 'Welcome to the channel')
-  socket.broadcast.emit('message', 'A user has joined the channel')
-  socket.on('disconnect', () => {
-    io.emit('message', 'A user has left the channel')
-  })
-})
+
 // app.use(
 //   express.static(
 //     path.join(path.dirname(fileURLToPath(import.meta.url)), 'public')
@@ -88,7 +84,9 @@ app.use(passUserToView)
 app.use('/', indexRouter)
 app.use('/auth', authRouter)
 app.use('/profile', profileRouter)
+app.use('/user', userRouter)
 app.use('/channel', channelRouter)
+app.use('/channels', channelsRouter)
 // app.use('/reviews', reviewsRouter)
 // app.use('/messages', messagesRouter)
 
