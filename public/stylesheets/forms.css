@@ -1,9 +1,21 @@
 input {
     width: 100%;
-    background: #000;
-    border: none;
+    background: #fff;
+    border: 3px solid #4bbe43;
     border-radius: 5px;
-    color: #aaaaaa;
+    color: #000;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+input::placeholder {
+    font-weight: 400;
+}
+
+input:focus {
+    border: 3px solid #4bbe43;
+    outline: none;
+    box-shadow: 0 10px 20px 0 rgb(216, 255, 213);
 }
 
 input.username{
@@ -17,4 +29,15 @@ input.search {
     font-size: 18px;
     text-align: left;
     text-indent: 20px;
+}
+
+#setUsername {
+    
+}
+
+input#message {
+    width: 90%;
+    margin: 0;
+    padding: 0px;
+    
 }

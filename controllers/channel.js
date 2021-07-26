@@ -12,29 +12,31 @@ function chatRoom(req, res) {
     Profile.findById(req.user.profile._id, (err, profile) => {
       console.log("USER PROFILE vvvvvvvvvvvvv")
       console.log(profile)
-      Message.find({})
-        .sort({_id: -1})
+      Message.find({'channel': req.params.channel})
+        .sort({_id: 1})
         .limit(150)
         .then((chats) => {
           console.log("CHAT:")
+          console.log(req.params.channel)
             res.render('channel', {
                 title: "Chat Room",
                 user: req.user,
                 profile: profile,
                 channel: req.params.channel,
-                chats: chats
+                chats: chats,
+                activeNav: ""
         })
       })
     })
 }
 
 function postChat(req, res) {
-    if (req.body.username === req.user.profile.username) {
-      Message.create(req.body)
-          .then(() => {
-        res.status(201).send("Added");
-      });
-    } else {
-      res.status(208).send("Already added");
-    }
+  console.log("controllers/channel.js >> Creating New Message with Body:")
+  console.log(req.body)
+  let message = new Message(req.body)
+      message.save().then((msg) => {
+        console.log("ADDED MESSAGE:")
+        console.log(msg)
+        res.status(201).send("Added")
+  })
 }

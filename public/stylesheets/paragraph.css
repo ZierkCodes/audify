@@ -1,4 +1,4 @@
-p {
+p.welcome {
     padding-bottom: 25px;
 }
 
@@ -20,4 +20,23 @@ p.members {
     text-align: right;
     height: 0px;
     width: 40%;
+}
+
+#isTyping {
+    margin: 0;
+    padding: 0;
+}
+
+p.username {
+    padding: 2px;
+    margin: 0px;
+}
+
+p.text {
+    padding: 0px;
+    margin: 0px;
+}
+
+p.username {
+    color: #4bbe43;
 }

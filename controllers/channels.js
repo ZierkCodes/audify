@@ -3,7 +3,9 @@ import { Profile } from '../models/profile.js'
 
 export {
     isRegistered,
-    registerUsername
+    registerUsername,
+    getMembersInChannels,
+    updateMembersInChannels
 }
 
 function isRegistered(req, res, next) {
@@ -18,3 +20,10 @@ function registerUsername(req, res, next) {
     // User.find({req.user.id})
 }
 
+function getMembersInChannels (req, res, next) {
+    
+}
+
+function updateMembersInChannels (req, res, next) {
+
+}

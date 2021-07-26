@@ -28,16 +28,21 @@ function (accessToken, refreshToken, profile, done) {
           spotify_id: profile.id,
           profile: newProfile._id
         })
-        newProfile.save(function (err) {
+        newProfile.save(function (err, prof) {
           if (err) return done(err)
+          console.log("SAVED PROFILE")
+          console.log(prof)
         })
         newUser.save(function (err) {
           if (err) {
+            console.log("ERROR: " + err)
             // Something went wrong while making a user - delete the profile
             // we just created to prevent orphan profiles.
             Profile.findByIdAndDelete(newProfile._id)
             return done(err)
           }
+          console.log("SAVED USER")
+          console.log(newUser)
           return done(null, newUser)
         })
       }

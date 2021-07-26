@@ -10,12 +10,12 @@
 <body class="bcenter">
     <section class="center">
       <form id="setUsername" method="POST" action="/profile/set">
-        <img src="<%= user.profile.avatar %>" alt="" style="width: 80px; height: 80px; border-radius: 50px;">
+        <img class="profile-lg" src="<%= user.profile.avatar %>" alt="">
         <h1>Welcome, <span class="au-primary"><%= user.profile.name.split(" ")[0] %>!</span></h1>
-        <p>For privacy, please set a username for this account.</p>
+        <p class="welcome">For privacy, please set a username for this account.</p>
         <input class="username" id="username" name="username" type="text" placeholder="Enter Username">
-        <p><small>Don't worry, you won't ever have to sign in with your username.</small></p>
-        <button type="submit" form="setUsername">Start Discovering</button>
+        <p class="welcome"><small>Don't worry, you won't ever have to sign in with your username.</small></p>
+        <button class="set_username" type="submit" form="setUsername">Start Discovering</button>
       </form>
     </section>
 </body>

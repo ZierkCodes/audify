@@ -10,19 +10,20 @@ export {
 
 function getUsername(req, res) {
     console.log("GETTING USERNAME!!")
-    console.log(req.user.profile._id)
-    Profile.findOne({_id: req.user.profile._id}, (err, doc) => {
-        if(err) {
-            console.log(err)
-        }
-
-        if(doc.username) {
-            res.redirect('/channels')
-        } else {
-            res.redirect('/welcome')
-        }
-    })
-
+    console.log(req.user)
+    if(req.user.profile._id) {
+        Profile.findOne({_id: req.user.profile._id}, (err, doc) => {
+            if(err) {
+                console.log(err)
+            }
+    
+            if(doc.username) {
+                res.redirect('/channels')
+            } else {
+                res.redirect('/welcome')
+            }
+        })
+    }
 }
 
 function setUsername(req, res) {

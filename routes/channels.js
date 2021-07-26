@@ -10,7 +10,7 @@ const router = Router()
 // })
 router.get('/', isLoggedIn, function(req, res, next) {
     console.log(res.locals.user)
-    res.render('channels')
+    res.render('channels', {activeNav: 'channel'})
 })
 // router.get('/', isLoggedIn, channelCtrl.chatRoom)
 

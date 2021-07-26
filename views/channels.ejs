@@ -1,22 +1,51 @@
 <%- include('./partials/head.ejs') %>
-<body class="left">
+<body>
   <%- include('./partials/header.ejs') %>
-    <section class="channels">
-      <h2>Discover</h2>
-      <input class="search" type="text" placeholder="Search Channels">
-    </section>
-    <section class="channel_list">
-      <%- include('./partials/channel_item.ejs') %>
-      <%- include('./partials/channel_item.ejs') %>
-      <%- include('./partials/channel_item.ejs') %>
-      <%- include('./partials/channel_item.ejs') %>
-      <%- include('./partials/channel_item.ejs') %>
-      <%- include('./partials/channel_item.ejs') %>
-      <%- include('./partials/channel_item.ejs') %>
-      <%- include('./partials/channel_item.ejs') %>
-      <%- include('./partials/channel_item.ejs') %>
-      <%- include('./partials/channel_item.ejs') %>
-      <%- include('./partials/channel_item.ejs') %>
+    <section class="channels_list">
+      <div>
+        <h2>Discover</h2>
+        <input class="search" type="text" placeholder="Search Channels">
+        <div class="channel_item" data-channel="edm">
+          <p class="hashtag">#</p>
+          <p class="genre"><a href="/channel/edm">edm</a></p>
+        </div>
+        <div class="channel_item" data-channel="rock">
+            <p class="hashtag">#</p>
+            <p class="genre"><a href="/channel/rock">rock</a></p>
+        </div>
+        <div class="channel_item">
+          <p class="hashtag">#</p>
+          <p class="genre"><a href="/channel/metal">metal</a></p>
+        </div>
+        <div class="channel_item">
+            <p class="hashtag">#</p>
+            <p class="genre"><a href="/channel/lo-fi">lo-fi</a></p>
+        </div>
+        <div class="channel_item">
+          <p class="hashtag">#</p>
+          <p class="genre"><a href="/channel/gaming">gaming</a></p>
+        </div>
+        <div class="channel_item">
+            <p class="hashtag">#</p>
+            <p class="genre"><a href="/channel/rap">rap</a></p>
+        </div>
+        <div class="channel_item">
+          <p class="hashtag">#</p>
+          <p class="genre"><a href="/channel/alternative">alternative</a></p>
+        </div>
+        <div class="channel_item">
+          <p class="hashtag">#</p>
+          <p class="genre"><a href="/channel/alternative">alternative</a></p>
+        </div>
+        <div class="channel_item">
+          <p class="hashtag">#</p>
+          <p class="genre"><a href="/channel/alternative">alternative</a></p>
+        </div>
+        <div class="channel_item">
+          <p class="hashtag">#</p>
+          <p class="genre"><a href="/channel/alternative">alternative</a></p>
+        </div>
+    </div>
     </section>
 </body>
 </html>

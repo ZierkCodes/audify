@@ -14,6 +14,7 @@ const messageSchema = new Schema({
     username: String,
     avatar: String, 
     message: String,
+    channel: String,
     songs: [{type: Schema.Types.ObjectId, ref: "Song"}],
     reactions: [{type: Schema.Types.ObjectId, ref: "Reaction"}]
 }, {
