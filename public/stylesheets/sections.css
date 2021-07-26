@@ -2,6 +2,15 @@ section {
     padding: 20px;
 }
 
+.main {
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 section.channels {
     display: flex;
     flex-direction: column;
