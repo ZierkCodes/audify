@@ -9,6 +9,7 @@ let avatar = document.getElementById("avatar");
 let isTyping = document.getElementById("isTyping");
 let chatters = document.getElementById("chatters");
 let channel = document.getElementById("channel").dataset.channel
+let messageInput = document.querySelector(".message_input")
 socket.emit('create', channel)
 console.log(channel)
 
@@ -48,11 +49,12 @@ socket.on("new_message", (data) => {
             <img id="avatarPhoto" height="30" src="${data.avatar}" alt="">
         </div>
         <div class="content">
-            <p class="username">${data.username} <small>a few seconds ago</small></p>
+            <p class="username">${data.username} <small class="date">a few seconds ago</small></p>
             <p class="text">${data.message}</p>
         </div>
     `
     chatroom.append(newMessage)
+    chatroom.scrollTo(0, chatroom.scrollHeight)
     console.log("CHANNEL.JS SOCKET NEW MESSAGE")
     // This is going to be something else? 
     fetch(`/channel/${channel}`, {
@@ -110,4 +112,48 @@ function getUserName() {
     });
 }
 
+let observe;
+  if (window.attachEvent) {
+      observe = function (element, event, handler) {
+          element.attachEvent('on' + event, handler);
+      };
+  }
+  else {
+      observe = function (element, event, handler) {
+          element.addEventListener(event, handler, false);
+      };
+  }
+  function init () {
+        let maxHeight = 100;
+      
+      function resize (maxHeight) {
+        console.log(message.scrollHeight);
+          if(message.scrollHeight < maxHeight){
+            message.removeAttribute("class")
+            message.style.height = 'auto';
+            message.style.height = message.scrollHeight+'px';
+          }
+          else{
+            console.log('over');
+            message.className = "yScroll";
+          }
+      }
+      
+      function delayedResize () {
+          window.setTimeout(resize(maxHeight), 0);
+      }
+      observe(message, 'change',  resize(maxHeight));
+      observe(message, 'cut',     delayedResize);
+      observe(message, 'paste',   delayedResize);
+      observe(message, 'drop',    delayedResize);
+      observe(message, 'keydown', delayedResize);
+
+      message.focus();
+      message.select();
+      resize(maxHeight);
+  }
+
+init();
+
 getUserName();
+

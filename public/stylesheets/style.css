@@ -37,9 +37,14 @@ img.header {
 }
 
 h3.channel_name {
-  /* display: flex; */
-  /* justify-self: flex-start !important;
-  align-self: flex-start; */
+  color: #fff;
+  background: #1a1414;
+  height: auto;
+  padding: 15px;
+  margin-top: 0px;
   margin-bottom: auto;
-  border: 1px solid red;
+}
+
+.date {
+  color: #595959;
 }

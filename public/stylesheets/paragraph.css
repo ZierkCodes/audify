@@ -28,15 +28,25 @@ p.members {
 }
 
 p.username {
-    padding: 2px;
-    margin: 0px;
-}
-
-p.text {
+    color: #4bbe43;
     padding: 0px;
     margin: 0px;
 }
 
-p.username {
+p.text {
+    font-size: 14px;
+    padding: 0px;
+    margin: 0px;
+}
+
+p#username {
     color: #4bbe43;
+    padding: 0px;
+    margin-bottom: 10px;
+}
+
+p#text {
+    font-size: 14px;
+    padding: 0px;
+    margin: 0px;
 }

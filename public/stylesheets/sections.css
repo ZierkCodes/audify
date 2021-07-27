@@ -38,7 +38,6 @@ section.chatroom_container {
     margin: 0;
     padding: 15px;
     height: 100px;
-    border: 1px solid red
 }
 
 section.chatroom_container {
@@ -47,4 +46,8 @@ section.chatroom_container {
     margin: 0;
     padding: 0;
     height: calc(100vh - 80px)
+}
+
+section.most_popular {
+    
 }
