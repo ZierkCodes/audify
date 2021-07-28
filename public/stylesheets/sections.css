@@ -49,5 +49,8 @@ section.chatroom_container {
 }
 
 section.most_popular {
-    
+    background: #1a1414;
+    padding: 10px;
+    height: 70px;
+    margin: 0px;
 }
