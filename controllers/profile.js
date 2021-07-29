@@ -37,24 +37,6 @@ function setUsername(req, res) {
         res.redirect('/channels')
     })
 
-
-    // User.findById(req.user._id, (error, user) => {
-    //     if(!user) {
-    //         console.log("User not found")
-    //     } else {
-    //         console.log("SET USERNAME")
-    //         console.log("INPUT: " + req.body.username)
-    //         user.profile.username = req.body.username
-    //         user.save().then(() => {
-    //             console.log("SAVED!!!!!!!!")
-    //             console.log(user)
-    //             res.redirect('/channels')
-    //             // Update req.user
-    //             // res.redirect...
-    //         })
-    //     }
-    // })
-
 }
 
 function verify(req, res, next) {

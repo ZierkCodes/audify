@@ -81,24 +81,27 @@ message.addEventListener("keypress", (e) => {
     if ((message.offsetHeight < message.scrollHeight) || (message.offsetWidth < message.scrollWidth)) {
         e.stopPropagation();
     }
-    if(e.key === 8) {
-        message.innerHTML = ''
-        message.style.height = '44px'
-        message_container.style.height = '44px'
-        message_container.classList.remove('yScroll')
-    }
+
     if(e.key === "Enter") {
+        document.execCommand('insertHTML', false, '')
+        
         if(e.shiftKey) {
             resize(maxHeight)
-            document.execCommand('insertHTML', false, '<br />')
+            message.scrollTop = message.scrollHeight
+            message_container.scrollTop = message_container.scrollHeight
+            // document.execCommand('insertHTML', false, '<br />')
             // let caret = getCaretPosition(message)
             // message.innerHTML = message.innerHTML.substring(0, caret - 1) + "<br />" + content.substring(caret, content.length);
             // e.stopPropagation()
         } else {
+            e.preventDefault()
+            console.log('============================')
+            console.log(message.innerText)
+            console.log(message.innerHTML.trim().length)
+            console.log('============================')
             if(message.innerHTML.trim().length > 0) {
                 resize(maxHeight)
-                document.execCommand('insertHTML', false, '')
-                e.preventDefault()
+                
 
                 socket.emit("new_message", {
                     username: username.value,
@@ -132,10 +135,19 @@ message.addEventListener('paste', () => {
     resize(maxHeight)
 })
 message.addEventListener('keydown', (e) => {
-    resize(maxHeight)
+    if(e.key === "Backspace") {
+        resize(maxHeight)
+    } else {
+        resize(maxHeight)
+    }
 })
 message.addEventListener('keyup', (e) => {
-    resize(maxHeight)
+    if(e.key === "Backspace") {
+        console.log("BACKSPACE")
+        resize(maxHeight)
+    } else {
+        resize(maxHeight)
+    }
 })
 message.addEventListener('keypress', (e) => {
     resize(maxHeight)
@@ -182,16 +194,19 @@ function delayedResize () {
 function resize (maxHeight) {
     console.log("SCROLL HEIGHT")
     console.log(message.scrollHeight);
-    if(message.scrollHeight < maxHeight){
+    if(message.scrollHeight <= maxHeight){
         message.removeAttribute("class")
         message.style.height = 'auto';
-        message.style.height = message.scrollHeight+'px';
+        // message.style.height = message.scrollHeight+'px';
         message_container.style.height = message.scrollHeight+'px';
     }
     else{
         console.log('over');
         message_container.className = "yScroll";
     }
+
+    // message.scrollTop = message.scrollHeight
+    message_container.scrollTop = message_container.scrollHeight
 }
 
 
