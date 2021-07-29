@@ -17,4 +17,3 @@ const profileSchema = new Schema({
 })
 
 const Profile = mongoose.model('Profile', profileSchema)
-const Mood = mongoose.model('Mood', moodSchema)

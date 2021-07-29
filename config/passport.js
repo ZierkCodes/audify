@@ -3,7 +3,7 @@ import { Strategy as GoogleStrategy } from 'passport-google-oauth20'
 import { User } from '../models/user.js'
 import { Profile } from '../models/profile.js'
 
-passport.use(new SpotifyStrategy({
+passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT,
     clientSecret: process.env.GOOGLE_SECRET,
     callbackURL: process.env.GOOGLE_CALLBACK
