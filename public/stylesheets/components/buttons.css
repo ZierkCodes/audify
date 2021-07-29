@@ -1,0 +1,40 @@
+  .button {
+    cursor: pointer;
+    position: relative;
+    border: none;
+    padding: 1rem 3rem;
+    margin: 1rem;
+    margin-top: 16rem;
+    border-radius: 99999px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: "Open Sans", sans-serif;
+    transition: 0.2s all;
+    transition-timing-function: ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .button:hover {
+    transform: translatey(3px);
+  }
+  .button:focus {
+    outline: none;
+  }
+
+  .button.google {
+    background-color: #FFFFFF;
+    box-shadow: 0 3px 20px rgba(39, 68, 74, 0.2);
+    color: #506569;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 2rem;
+  }
+  .button.google > img {
+    height: 25px;
+    width: 25px;
+    margin-right: 10px;
+  }
+  .button.google:hover {
+    box-shadow: 0 1px 5px rgba(39, 68, 74, 0.2);
+  }

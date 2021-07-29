@@ -9,7 +9,7 @@ const router = Router()
 
 router.get(
   '/google',
-  passport.authenticate('google')
+  passport.authenticate('google', {scope: ['profile', 'email']})
 )
 
 router.get(

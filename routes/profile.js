@@ -7,6 +7,12 @@ const router = Router()
 router.get('/login', profileCtrl.getUsername)
 router.post('/set', profileCtrl.setUsername)
 
+router.get('/verify', (req, res, next) => {
+  res.render('verify.ejs')
+})
+
+router.post('/verify', profileCtrl.verify)
+
 // router.put('/username')
 
 export {

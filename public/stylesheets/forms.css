@@ -1,7 +1,7 @@
 input {
-    width: 100%;
+    width: calc(100% - 10px);
     background: #fff;
-    border: 3px solid #4bbe43;
+    border: 3px solid #1D88D2;
     border-radius: 5px;
     color: #000;
     margin-bottom: 15px;

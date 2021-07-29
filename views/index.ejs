@@ -1,20 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/stylesheets/style.css">
-  <title><%= title %></title>
-</head>
+<%- include('./partials/head.ejs') %>
 <body>
   <section class="main">
-    <h1><%= title %></h1>
-    <button type="submit" class="siwg">
-      <a href="/auth/google" class="siwg-link right item">
-        Sign in with Spotify
-      </a>
-    </button>
+    <h1 class="logo"><span>Vet</span>Net</h1>
+    
+    <p><i class="fas fa-flag-usa"></i><br/>Join our network of veterans and patriots to get support and provide help.</p>
+
+    <button class="button google flex justify-center align-center" onclick="window.location = '/auth/google'"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" class="flex self-center pr2"> Login with Google</button>
   </section>
 </body>
 </html>

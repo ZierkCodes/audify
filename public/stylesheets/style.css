@@ -7,34 +7,30 @@
 @import url('divs.css');
 @import url('images.css');
 @import url('icons.css');
+@import url('./components/buttons.css');
+@import url('./components/navigation.css');
+@import url('./components/channel_item.css');
 
 html {
-  background: url('../images/duotone.png') no-repeat center center fixed;
+  background: url('../images/61025b686e91d.jpeg') no-repeat center center fixed;
   background-size: cover;
 }
 
 
-button {
+/* button {
   width: 90%;
   height: 60px;
   background: #000;
   border: none;
   border-radius: 35px;
   cursor: pointer;
-}
+} */
 
 a {
   text-decoration: none;
 }
 
-header {
-  background: #000;
-  width: 100%;
-}
 
-img.header {
-  padding: 15px
-}
 
 h3.channel_name {
   color: #fff;

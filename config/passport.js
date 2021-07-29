@@ -22,6 +22,8 @@ function (accessToken, refreshToken, profile, done) {
         const newProfile = new Profile({
           name: profile.displayName,
           username: '',
+          verified_military: false,
+          military_status: '',
           avatar: profile.photos[0].value,
         })
         const newUser = new User({

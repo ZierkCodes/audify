@@ -1,14 +1,4 @@
-div.channel_item {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 0 auto;
-    width: 100%;
-    height: 40px;
-    border-top: solid 1px rgb(236, 236, 236);
-    margin: 0px;
-    padding-top: 5px;
-}
+
 
 div.icons {
     border: solid 1px red;
@@ -16,28 +6,9 @@ div.icons {
     height: 60px;
 }
 
-div.header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-right: 20px;
-    color: rgb(236, 236, 236);
-}
 
-nav.nav {
-    color: #4bbe43;
-    width: 150px;
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
-.channels_list {
-    height: calc(100vh - 120px);
-    overflow-y: scroll;
-}
+
 
 div.content {
     width: 310px;

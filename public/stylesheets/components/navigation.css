@@ -1,0 +1,43 @@
+header {
+    background: #00387D;
+    width: 100%;
+}
+
+img.header {
+    margin: 15px;
+    border: 3px solid #FFF;
+}
+
+div.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 20px;
+    color: rgb(236, 236, 236);
+}
+
+nav.nav {
+    color: #E32226;
+    width: 150px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fa-stack .fa {
+    color: #FFF;
+}
+
+.fa.fa-circle {
+    color: #00387D
+}
+
+.fa-stack.active .fa {
+    color: #00387D;
+}
+
+.fa-stack.active .fa.fa-circle {
+    color: #FFF;
+}

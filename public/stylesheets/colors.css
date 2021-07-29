@@ -1,5 +1,9 @@
-.au-primary {
-    color: #4bbe43;
+.vn-primary {
+    color: #00387D;
+}
+
+.vn-secondary {
+    color: #E32226;
 }
 
 p {
@@ -7,16 +11,9 @@ p {
 }
 
 a {
-    color: #4bbe43;
+    color: #1D88D2;
 }
 
-p.hashtag {
-    color: #4bbe43;
-}
-
-p.genre {
-    color: #000
-}
 
 button.set_username {
     color: #4bbe43

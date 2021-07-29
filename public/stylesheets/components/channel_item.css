@@ -1,0 +1,34 @@
+.channels_list {
+    height: calc(100vh - 134px);
+    overflow-y: scroll;
+}
+
+.channel_item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-top: solid 1px #D8D9DB;
+}
+
+.channel_item p {
+    align-content: center;
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+p.hashtag {
+    color: #96A0AA;
+}
+
+p.topic {
+    font-weight: 600;
+    text-align: left;
+    text-decoration: none;
+    color: #000;
+}
+
+p.topic a {
+    color: #E32226;
+}

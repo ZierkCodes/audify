@@ -1,11 +1,12 @@
 import { Profile } from '../models/profile.js'
 import { User } from '../models/user.js'
 import passport from 'passport'
+import axios from 'axios'
 
 export {
     getUsername,
-    setUsername
-
+    setUsername,
+    verify
 }
 
 function getUsername(req, res) {
@@ -54,4 +55,35 @@ function setUsername(req, res) {
     //     }
     // })
 
+}
+
+function verify(req, res, next) {
+    let config = {
+        headers: {
+            'apikey': process.env.VA_API_KEY,
+            'Content-Type': 'application/json'
+        }
+    }
+
+    let data = {
+        'ssn': req.body.social,
+        'last_name': req.body.last_name,
+        'first_name': req.body.first_name,
+        'birth_date': req.body.dob
+    }
+
+    axios.post('https://sandbox-api.va.gov/services/veteran_confirmation/v0/status', data, config)
+    .then((response) => {
+        console.log(response)
+        // res.status(200).json(response.data)
+        if(response.data.veteran_status === 'confirmed') {
+            // Update User!
+        } else {
+            // Redirect to Profile Page and Dispaly Error
+        }
+    })
+    .catch((error) => {
+        console.log(error)
+        res.json(error)
+    })
 }
