@@ -1,40 +1,64 @@
 <%- include('./partials/head.ejs') %>
 <body>
     <%- include('./partials/header.ejs') %>
-    <section class="chatroom_container">
-        <div id="channel" data-channel="<%= channel %>" hidden></div>
-        <h3 class="channel_name">#<%= channel %></h3>
 
-        <div id="chatroom">
-            <div class="flex">
-                <% chats.forEach(c => { %>
-                    <div class="message_output">
-                        <div class="avatar">
-                            <img class="avatarPhoto" height="30" src="<%= c.avatar %>" alt="">
-                        </div>
-                        <div class="content">
-                            <p class="username"><%= c.username %> <small class="date"><%=` ${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][c.createdAt.getMonth()]} ${c.createdAt.getDate()}, ${c.createdAt.getFullYear()} ${c.createdAt.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit'})} `%></small></p>
-                            <p class="text"><%- c.message %></p>
-                        </div>
+    <div id="channel" data-channel="<%= channel %>" hidden></div>
+    <h3 class="channel_name"># <%= channel %></h3>
+    <section id="chat">
+        <section id="chatroom">
+            <% chats.forEach(msg => { %>
+                <div class="message_output">
+                    <div class="avatar">
+                        <img class="avatarPhoto" src="<%= msg.avatar %>" alt="Profile Image" />
                     </div>
-                <% }) %>
+                    <div class="content">
+                        <p class="username"><%= msg.username%> <small class="date"><%=` ${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][msg.createdAt.getMonth()]} ${msg.createdAt.getDate()}, ${msg.createdAt.getFullYear()} ${msg.createdAt.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit'})} `%></small></p>
+                        <p class="text"><%- msg.message %></p>
+                    </div>
+                </div>
+            <% }) %>
+        </section>
+        <section id="message_input">
+            <p id="isTyping"></p>
+            <input type="text" id="avatar" hidden name="avatar" value="<%= user.profile.avatar %>">
+            <input type="text" hidden name="username" value="<%= profile.username %>" id="username">
+            <div id="message_container">
+                <span id="message" contenteditable="true" placeholder="Message #<%=channel%>"></span>
             </div>
-        </div>
-        <% // Notice the <ul> here that we'll be appending chatroom users to! %>
-        <!-- <ul id="chatters"></ul> -->
-            <div class="message_input">
-                <p id="isTyping"></p>
-                <input type="text" id="avatar" hidden name="avatar" value="<%= user.profile.avatar %>">
-                <input type="text" hidden name="username" value="<%= profile.username %>" id="username">
-                <!-- <textarea type="text" id="message" rows="3" cols="55"></textarea> -->
-                <span id="message" contenteditable="true"><p>Test</p></span>
-                <a class="btn btn-info" href="#" id="send_message"></a>
-            </div>
+        </section>
     </section>
-
+    
     <% // We need to bring in a JavaScript file for this!!! %>
     <script defer src="/js/channel.js"></script>
-
-
 </body>
 </html>
+
+
+<!--
+<section class="chatroom_container">
+    <div id="channel" data-channel="<%= //channel %>" hidden></div>
+    <h3 class="channel_name">#<%= //channel %></h3>
+
+    <div id="chatroom">
+            <% //chats.forEach(c => { %>
+                <div class="message_output">
+                    <div class="avatar">
+                        <img class="avatarPhoto" height="30" src="<%= //c.avatar %>" alt="">
+                    </div>
+                    <div class="content">
+                        <p class="username"><%=// c.username %> <small class="date"><%=//` ${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][c.createdAt.getMonth()]} ${c.createdAt.getDate()}, ${c.createdAt.getFullYear()} ${c.createdAt.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit'})} `%></small></p>
+                        <p class="text"><%- //c.message %></p>
+                    </div>
+                </div>
+            <% //}) %>
+    </div>
+        <div class="message_input">
+            <p id="isTyping"></p>
+            <input type="text" id="avatar" hidden name="avatar" value="<%= //user.profile.avatar %>">
+            <input type="text" hidden name="username" value="<%= //profile.username %>" id="username">
+            <div class="message_container">
+                <span id="message" contenteditable="true" placeholder="Message #<%=//channel%>"></span>
+            </div>
+        </div>
+    </section>
+-->

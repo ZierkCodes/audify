@@ -28,7 +28,7 @@ function getUsername(req, res) {
 }
 
 function setUsername(req, res) {
-    Profile.findOneAndUpdate({_id: req.user.profile._id}, {$set: {username: req.body.username}}, {new: true}, (err, doc) => {
+    Profile.findOneAndUpdate({_id: req.user.profile._id}, {$set: {username: req.body.username, branch: req.body.branch}}, {new: true}, (err, doc) => {
         if(err) {
             console.log(err)
         }

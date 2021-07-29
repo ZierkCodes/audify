@@ -2,6 +2,7 @@ const socket = io()
 
 
 let message = document.getElementById("message");
+let message_container = document.querySelector('#message_container')
 let username = document.getElementById("username");
 let send_message = document.getElementById("send_message");
 let chatroom = document.getElementById("chatroom");
@@ -10,8 +11,11 @@ let isTyping = document.getElementById("isTyping");
 let chatters = document.getElementById("chatters");
 let channel = document.getElementById("channel").dataset.channel
 let messageInput = document.querySelector(".message_input")
+let maxHeight = 66;
+
+chatroom.scrollTop = chatroom.scrollHeight
+
 socket.emit('create', channel)
-console.log(channel)
 
 
 socket.on("connect", () => {
@@ -70,47 +74,81 @@ socket.on("new_message", (data) => {
 })
 
 message.addEventListener("keypress", () => {
-    console.log("CHANNEL.JS TYPING EVENT TRIGGERED")
     socket.emit("typing", {username: username.value, channel: channel})
 })
 
 message.addEventListener("keypress", (e) => {
-    console.log("KEYPRESS")
     if ((message.offsetHeight < message.scrollHeight) || (message.offsetWidth < message.scrollWidth)) {
         e.stopPropagation();
     }
-
+    if(e.key === 8) {
+        message.innerHTML = ''
+        message.style.height = '44px'
+        message_container.style.height = '44px'
+        message_container.classList.remove('yScroll')
+    }
     if(e.key === "Enter") {
-        console.log(message.innerHTML)
         if(e.shiftKey) {
+            resize(maxHeight)
             document.execCommand('insertHTML', false, '<br />')
-            return false
             // let caret = getCaretPosition(message)
             // message.innerHTML = message.innerHTML.substring(0, caret - 1) + "<br />" + content.substring(caret, content.length);
             // e.stopPropagation()
         } else {
             if(message.innerHTML.trim().length > 0) {
-                console.log(message.innerHTML)
-                console.log("CHANNEL.JS NEW MESSAGE")
+                resize(maxHeight)
+                document.execCommand('insertHTML', false, '')
+                e.preventDefault()
+
                 socket.emit("new_message", {
                     username: username.value,
                     message: message.innerHTML.replaceAll({"\n": "<br />"}),
                     avatar: avatar.value,
                     channel: channel
                 })
-        
+    
                 message.innerHTML = ''
-                unwrap(message, "div")
-                console.log(message)                
+                message.style.height = 'auto'
+                message_container.style.height = '40px'
+                message_container.classList.remove('yScroll')
             } else {
+                message.innerHTML = ''
+                message.style.height = 'auto'
+                message_container.style.height = '40px'
+                message_container.classList.remove('yScroll')
                 return
             }
         }
     }
 })
 
+message.addEventListener('change', () => {
+    resize(maxHeight)
+})
+message.addEventListener('cut', () => {
+    resize(maxHeight)
+})
+message.addEventListener('paste', () => {
+    resize(maxHeight)
+})
+message.addEventListener('keydown', (e) => {
+    resize(maxHeight)
+})
+message.addEventListener('keyup', (e) => {
+    resize(maxHeight)
+})
+message.addEventListener('keypress', (e) => {
+    resize(maxHeight)
+})
+/**
+ *     observe(message, 'change',  resize(maxHeight));
+    observe(message, 'cut',     delayedResize);
+    observe(message, 'paste',   delayedResize);
+    observe(message, 'drop',    delayedResize);
+    observe(message, 'keydown', delayedResize);
+ */
+
 function getUserName() {
-    console.log("GETTING USERNAME")
     fetch("/user/name")
         .then((response) => {
         return response.json()
@@ -134,72 +172,30 @@ else {
     };
 }
 function init () {
-    let maxHeight = 50;
-    
-    function resize (maxHeight) {
-    console.log(message.scrollHeight);
-        if(message.scrollHeight < maxHeight){
-            message.removeAttribute("class")
-            message.style.height = 'auto';
-            message.style.height = message.scrollHeight+'px';
-        }
-        else{
-            console.log('over');
-            message.className = "yScroll";
-        }
-    }
-    
-    function delayedResize () {
-        window.setTimeout(resize(maxHeight), 0);
-    }
-    observe(message, 'change',  resize(maxHeight));
-    observe(message, 'cut',     delayedResize);
-    observe(message, 'paste',   delayedResize);
-    observe(message, 'drop',    delayedResize);
-    observe(message, 'keydown', delayedResize);
-
-    message.focus();
-    message.select();
     resize(maxHeight);
 }
 
-function getCaretPosition(editableDiv) {
-    var caretPos = 0,
-      sel, range;
-    if (window.getSelection) {
-      sel = window.getSelection();
-      if (sel.rangeCount) {
-        range = sel.getRangeAt(0);
-        if (range.commonAncestorContainer.parentNode == editableDiv) {
-          caretPos = range.endOffset;
-        }
-      }
-    } else if (document.selection && document.selection.createRange) {
-      range = document.selection.createRange();
-      if (range.parentElement() == editableDiv) {
-        var tempEl = document.createElement("span");
-        editableDiv.insertBefore(tempEl, editableDiv.firstChild);
-        var tempRange = range.duplicate();
-        tempRange.moveToElementText(tempEl);
-        tempRange.setEndPoint("EndToEnd", range);
-        caretPos = tempRange.text.length;
-      }
-    }
-    return caretPos;
-  }
+function delayedResize () {
+    window.setTimeout(resize(maxHeight), 0);
+}
 
-  function unwrap(root,tagname,extra) {
-    var elms = root.getElementsByTagName(tagname), l = elms.length, i;
-    for( i=l-1; i>=0; i--) {
-        // work backwards to avoid possible complications with nested spans
-        while(elms[i].firstChild)
-            elms[i].parentNode.insertBefore(elms[i].firstChild,elms[i]);
-        if( extra) extra(elms[i]);
-        elms[i].parentNode.removeChild(elms[i]);
+function resize (maxHeight) {
+    console.log("SCROLL HEIGHT")
+    console.log(message.scrollHeight);
+    if(message.scrollHeight < maxHeight){
+        message.removeAttribute("class")
+        message.style.height = 'auto';
+        message.style.height = message.scrollHeight+'px';
+        message_container.style.height = message.scrollHeight+'px';
+    }
+    else{
+        console.log('over');
+        message_container.className = "yScroll";
     }
 }
 
-  String.prototype.replaceAll = function(obj) {
+
+String.prototype.replaceAll = function(obj) {
     var retStr = this;
     for (var x in obj) {
         retStr = retStr.replace(new RegExp(x, 'g'), obj[x]);
@@ -208,6 +204,5 @@ function getCaretPosition(editableDiv) {
 };
 
 init();
-
 getUserName();
 

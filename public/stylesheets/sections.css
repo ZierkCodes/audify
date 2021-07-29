@@ -1,6 +1,6 @@
-section {
+/* section {
     padding: 20px;
-}
+} */
 
 .main {
     height: 650px;
@@ -9,6 +9,7 @@ section {
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 20px;
 }
 
 section.channels {

@@ -10,6 +10,7 @@ input {
 
 input::placeholder {
     font-weight: 400;
+    color: #96A0AA;
 }
 
 input:focus {
@@ -61,37 +62,3 @@ input.search {
     font-family: 'Roboto', sans-serif;
     padding: 10px 10px;
 } */
-div.message_input {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-*[contenteditable="true"]{display: inline-block;}
-
-#message {
-    flex: 1;
-    display: inline-block;
-    margin: 15px;
-    width: 100%;
-    padding: 12px 10px 5px 10px;
-    height: auto;
-    outline: none;
-    border: none;
-    border: 3px solid #000000;
-    background: #000000;
-    color: #FFF;
-    border-radius: 6px;
-    white-space: pre-wrap;
-    vertical-align: middle;
-    font-family: 'Roboto', sans-serif;
-}
-
-#message.yScroll {
-    max-height: 50px;
-    overflow: auto;
-    overflow-y: scroll;
-}

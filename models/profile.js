@@ -10,7 +10,7 @@ const profileSchema = new Schema({
     username: String,
     avatar: String,
     verified_military: {type: Boolean, default: false},
-    military_status: String,
+    branch: String,
     friends: [{type: Schema.Types.ObjectId, ref: "Profile"}]
 }, {
   timestamps: true

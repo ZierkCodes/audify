@@ -12,6 +12,8 @@
 @import url('./components/channel_list.css');
 @import url('./components/message.css');
 @import url('./components/channel.css');
+@import url('./components/chatbox.css');
+@import url('./components/select.css');
 
 html {
   background: url('../images/61025b686e91d.jpeg') no-repeat center center fixed;

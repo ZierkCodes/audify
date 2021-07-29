@@ -1,22 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/stylesheets/style.css">
-  <title>Welcome</title>
-</head>
+<%- include('./partials/head.ejs') %>
 <body class="bcenter">
     <section class="center">
       <form id="setUsername" method="POST" action="/profile/set">
         <img class="profile-lg" src="<%= user.profile.avatar %>" alt="">
-        <h1>Welcome, <span class="au-primary"><%= user.profile.name.split(" ")[0] %>!</span></h1>
+        <h1>Welcome,<br /><strong><span class="vn-primary"><%= user.profile.name.split(" ")[0] %>!</span></strong></h1>
         <p class="welcome">For privacy, please set a username for this account.</p>
         <input class="username" id="username" name="username" type="text" placeholder="Enter Username">
+        
+
+        <div class="custom-select-wrapper">
+          <div class="custom-select">
+            <div class="custom-select__trigger">
+                <span class="spacer"></span>
+                <span id="selected-option">Select Branch</span>
+                <i id="icon" class="fas fa-chevron-down"></i>
+            </div>
+            <div class="custom-options">
+              <span class="custom-option" data-branch="usmc">Marine Corps</span>
+              <span class="custom-option" data-branch="navy">Navy</span>
+              <span class="custom-option" data-branch="army">Army</span>
+              <span class="custom-option" data-branch="air-force">Air Force</span>
+              <span class="custom-option" data-branch="patriot">I am not a veteran.</span>
+            </div>
+          </div>
+        </div>
+
+        <input id="branch" type="text" name="branch" hidden />
+        
+        
+        <!-- <select>
+          <option value="usmc">Marine Corps</option>
+          <option value="navy">Navy</option>
+          <option value="army">Army</option>
+          <option value="air-force">Air Force</option>
+          <option value="patriot">I am not a veteran.</option>
+        </select> -->
         <p class="welcome"><small>Don't worry, you won't ever have to sign in with your username.</small></p>
-        <button class="set_username" type="submit" form="setUsername">Start Discovering</button>
+        <button class="set_username" type="submit" form="setUsername">Start Chatting</button>
       </form>
     </section>
+
+    <script type="text/javascript" src="/js/welcome.js"></script>
 </body>
 </html>

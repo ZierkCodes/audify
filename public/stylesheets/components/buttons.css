@@ -38,3 +38,11 @@
   .button.google:hover {
     box-shadow: 0 1px 5px rgba(39, 68, 74, 0.2);
   }
+
+  button {
+    background: #E32226;
+    color: #FFF;
+    border: none;
+    border-radius: 100px;
+    padding: 15px 50px;
+  }

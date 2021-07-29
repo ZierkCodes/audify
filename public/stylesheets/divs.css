@@ -10,13 +10,7 @@ div.icons {
 
 
 
-div.content {
-    width: 310px;
-    margin: 0px;
-    padding: 15px 0px 20px;
-    white-space: normal;
-    word-wrap: break-word;
-}
+
 
 .content div {
     font-size: 14px;
@@ -27,17 +21,9 @@ div.content {
     color: #595959;
 }
 
-div#chatroom {
-    height: calc(100vh - 120px);
-    overflow-y: scroll;
-}
 
-div.flex {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    flex: 1;
-}
+
+
 
 
 

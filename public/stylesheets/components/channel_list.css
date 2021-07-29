@@ -1,15 +1,21 @@
 .channels_list {
     height: calc(100vh - 134px);
-    overflow-y: scroll;
+    padding: 0px 20px
 }
 
 .channel_item {
     display: flex;
+    cursor: pointer;
     flex-direction: row;
     align-items: center;
     width: 100%;
     height: 100%;
     border-top: solid 1px #D8D9DB;
+}
+
+.channel_item:active {
+    outline: 3px dashed #E32226;
+    outline-offset: -5px;
 }
 
 .channel_item:last-child {
