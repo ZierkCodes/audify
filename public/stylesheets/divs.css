@@ -47,6 +47,15 @@ div.content {
     word-wrap: break-word;
 }
 
+.content div {
+    font-size: 14px;
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #595959;
+}
+
 div#chatroom {
     height: calc(100vh - 120px);
     overflow-y: scroll;
@@ -68,14 +77,8 @@ div.message_output {
     border-top: 1px solid #f0f0f0;
 }
 
-div.message_input {
-    display: flex;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 120px;
-    word-wrap: break-word;
-    overflow-y: auto;
-    overflow-wrap: break-word;
+
+
+div.popular_song {
+    display: inline;
 }

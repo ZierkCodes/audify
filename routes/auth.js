@@ -8,13 +8,13 @@ export {
 const router = Router()
 
 router.get(
-  '/spotify',
-  passport.authenticate('spotify')
+  '/google',
+  passport.authenticate('google')
 )
 
 router.get(
-  '/spotify/oauth2callback',
-  passport.authenticate('spotify', {
+  '/google/callback',
+  passport.authenticate('google', {
     successRedirect: '/profile/login',
     failureRedirect: '/auth/spotify',
   })

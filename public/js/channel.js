@@ -74,28 +74,38 @@ message.addEventListener("keypress", () => {
     socket.emit("typing", {username: username.value, channel: channel})
 })
 
-send_message.addEventListener("click", () => {
-    socket.emit("new_message", {
-        username: username.value,
-        message: message.value,
-        avatar: avatar.value,
-        channel: channel
-    })
-
-    message.value = ""
-})
-
 message.addEventListener("keypress", (e) => {
-    if(e.key === "Enter") {
-        console.log("CHANNEL.JS NEW MESSAGE")
-        socket.emit("new_message", {
-            username: username.value,
-            message: message.value,
-            avatar: avatar.value,
-            channel: channel
-        })
+    console.log("KEYPRESS")
+    if ((message.offsetHeight < message.scrollHeight) || (message.offsetWidth < message.scrollWidth)) {
+        e.stopPropagation();
+    }
 
-        message.value = ""
+    if(e.key === "Enter") {
+        console.log(message.innerHTML)
+        if(e.shiftKey) {
+            document.execCommand('insertHTML', false, '<br />')
+            return false
+            // let caret = getCaretPosition(message)
+            // message.innerHTML = message.innerHTML.substring(0, caret - 1) + "<br />" + content.substring(caret, content.length);
+            // e.stopPropagation()
+        } else {
+            if(message.innerHTML.trim().length > 0) {
+                console.log(message.innerHTML)
+                console.log("CHANNEL.JS NEW MESSAGE")
+                socket.emit("new_message", {
+                    username: username.value,
+                    message: message.innerHTML.replaceAll({"\n": "<br />"}),
+                    avatar: avatar.value,
+                    channel: channel
+                })
+        
+                message.innerHTML = ''
+                unwrap(message, "div")
+                console.log(message)                
+            } else {
+                return
+            }
+        }
     }
 })
 
@@ -113,45 +123,89 @@ function getUserName() {
 }
 
 let observe;
-  if (window.attachEvent) {
-      observe = function (element, event, handler) {
-          element.attachEvent('on' + event, handler);
-      };
-  }
-  else {
-      observe = function (element, event, handler) {
-          element.addEventListener(event, handler, false);
-      };
-  }
-  function init () {
-        let maxHeight = 100;
-      
-      function resize (maxHeight) {
-        console.log(message.scrollHeight);
-          if(message.scrollHeight < maxHeight){
+if (window.attachEvent) {
+    observe = function (element, event, handler) {
+        element.attachEvent('on' + event, handler);
+    };
+}
+else {
+    observe = function (element, event, handler) {
+        element.addEventListener(event, handler, false);
+    };
+}
+function init () {
+    let maxHeight = 50;
+    
+    function resize (maxHeight) {
+    console.log(message.scrollHeight);
+        if(message.scrollHeight < maxHeight){
             message.removeAttribute("class")
             message.style.height = 'auto';
             message.style.height = message.scrollHeight+'px';
-          }
-          else{
+        }
+        else{
             console.log('over');
             message.className = "yScroll";
-          }
-      }
-      
-      function delayedResize () {
-          window.setTimeout(resize(maxHeight), 0);
-      }
-      observe(message, 'change',  resize(maxHeight));
-      observe(message, 'cut',     delayedResize);
-      observe(message, 'paste',   delayedResize);
-      observe(message, 'drop',    delayedResize);
-      observe(message, 'keydown', delayedResize);
+        }
+    }
+    
+    function delayedResize () {
+        window.setTimeout(resize(maxHeight), 0);
+    }
+    observe(message, 'change',  resize(maxHeight));
+    observe(message, 'cut',     delayedResize);
+    observe(message, 'paste',   delayedResize);
+    observe(message, 'drop',    delayedResize);
+    observe(message, 'keydown', delayedResize);
 
-      message.focus();
-      message.select();
-      resize(maxHeight);
+    message.focus();
+    message.select();
+    resize(maxHeight);
+}
+
+function getCaretPosition(editableDiv) {
+    var caretPos = 0,
+      sel, range;
+    if (window.getSelection) {
+      sel = window.getSelection();
+      if (sel.rangeCount) {
+        range = sel.getRangeAt(0);
+        if (range.commonAncestorContainer.parentNode == editableDiv) {
+          caretPos = range.endOffset;
+        }
+      }
+    } else if (document.selection && document.selection.createRange) {
+      range = document.selection.createRange();
+      if (range.parentElement() == editableDiv) {
+        var tempEl = document.createElement("span");
+        editableDiv.insertBefore(tempEl, editableDiv.firstChild);
+        var tempRange = range.duplicate();
+        tempRange.moveToElementText(tempEl);
+        tempRange.setEndPoint("EndToEnd", range);
+        caretPos = tempRange.text.length;
+      }
+    }
+    return caretPos;
   }
+
+  function unwrap(root,tagname,extra) {
+    var elms = root.getElementsByTagName(tagname), l = elms.length, i;
+    for( i=l-1; i>=0; i--) {
+        // work backwards to avoid possible complications with nested spans
+        while(elms[i].firstChild)
+            elms[i].parentNode.insertBefore(elms[i].firstChild,elms[i]);
+        if( extra) extra(elms[i]);
+        elms[i].parentNode.removeChild(elms[i]);
+    }
+}
+
+  String.prototype.replaceAll = function(obj) {
+    var retStr = this;
+    for (var x in obj) {
+        retStr = retStr.replace(new RegExp(x, 'g'), obj[x]);
+    }
+    return retStr;
+};
 
 init();
 

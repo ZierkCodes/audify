@@ -1,16 +1,16 @@
 import passport from 'passport'
-import { Strategy as SpotifyStrategy } from 'passport-spotify'
+import { Strategy as GoogleStrategy } from 'passport-google-oauth20'
 import { User } from '../models/user.js'
 import { Profile } from '../models/profile.js'
 
 passport.use(new SpotifyStrategy({
-    clientID: process.env.SPOTIFY_CLIENT,
-    clientSecret: process.env.SPOTIFY_SECRET,
-    callbackURL: process.env.SPOTIFY_CALLBACK
+    clientID: process.env.GOOGLE_CLIENT,
+    clientSecret: process.env.GOOGLE_SECRET,
+    callbackURL: process.env.GOOGLE_CALLBACK
 },
 function (accessToken, refreshToken, profile, done) {
-    console.log("PROFILE ID: " + profile.id)
-    User.findOne({ 'spotify_id': profile.id }, function (err, user) {
+    console.log("GOOGLE ID: " + profile.id)
+    User.findOne({ 'google_id': profile.id }, function (err, user) {
       console.log("USER: ")
       console.log(user)
       if (err) return done(err)
@@ -25,7 +25,8 @@ function (accessToken, refreshToken, profile, done) {
           avatar: profile.photos[0].value,
         })
         const newUser = new User({
-          spotify_id: profile.id,
+          google_id: profile.id,
+          email: profile.emails[0].value,
           profile: newProfile._id
         })
         newProfile.save(function (err, prof) {

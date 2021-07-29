@@ -5,18 +5,13 @@ export {
   Profile
 }
 
-const moodSchema = new Schema({
-    song: {type: Schema.Types.ObjectId, ref: "Song"}
-}, {
-    timestamps: true
-})
-
 const profileSchema = new Schema({
     name: String,
     username: String,
     avatar: String,
-    friends: [{type: Schema.Types.ObjectId, ref: "Profile"}],
-    moods: [{type: Schema.Types.ObjectId, ref: "Mood"}]
+    verified_military: {type: Boolean, default: false},
+    military_status: String,
+    friends: [{type: Schema.Types.ObjectId, ref: "Profile"}]
 }, {
   timestamps: true
 })

@@ -25,6 +25,8 @@
     "morgan": "~1.9.1",
     "nodemon": "^2.0.12",
     "passport": "^0.4.0",
+    "passport-google-oauth2": "^0.2.0",
+    "passport-google-oauth20": "^2.0.0",
     "passport-spotify": "^2.0.0",
     "pubnub": "^4.32.1",
     "socket.io": "^4.1.3",

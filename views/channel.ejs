@@ -5,11 +5,12 @@
         <div id="channel" data-channel="<%= channel %>" hidden></div>
         <h3 class="channel_name">#<%= channel %> - Most Popular</h3>
         <section class="most_popular">
-            <div>
+            <div class="popular_song">
                 <img class="album_image" src="" alt="">
                 <i class="fa fa-heart fe-stack-1x"></i>
                 <p class="votes">votes</p>
                 <p class="song_name"></p>
+
             </div>
         </section>
         <div id="chatroom">
@@ -21,7 +22,7 @@
                         </div>
                         <div class="content">
                             <p class="username"><%= c.username %> <small class="date"><%=` ${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][c.createdAt.getMonth()]} ${c.createdAt.getDate()}, ${c.createdAt.getFullYear()} ${c.createdAt.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit'})} `%></small></p>
-                            <p class="text"><%= c.message %></p>
+                            <p class="text"><%- c.message %></p>
                         </div>
                     </div>
                 <% }) %>
@@ -33,7 +34,8 @@
                 <p id="isTyping"></p>
                 <input type="text" id="avatar" hidden name="avatar" value="<%= user.profile.avatar %>">
                 <input type="text" hidden name="username" value="<%= profile.username %>" id="username">
-                <textarea type="text" id="message" rows="3" cols="55"></textarea>
+                <!-- <textarea type="text" id="message" rows="3" cols="55"></textarea> -->
+                <span id="message" contenteditable="true"><p>Test</p></span>
                 <a class="btn btn-info" href="#" id="send_message"></a>
             </div>
     </section>
