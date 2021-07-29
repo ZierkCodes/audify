@@ -9,7 +9,9 @@
 @import url('icons.css');
 @import url('./components/buttons.css');
 @import url('./components/navigation.css');
-@import url('./components/channel_item.css');
+@import url('./components/channel_list.css');
+@import url('./components/message.css');
+@import url('./components/channel.css');
 
 html {
   background: url('../images/61025b686e91d.jpeg') no-repeat center center fixed;
@@ -31,15 +33,6 @@ a {
 }
 
 
-
-h3.channel_name {
-  color: #fff;
-  background: #1a1414;
-  height: auto;
-  padding: 15px;
-  margin-top: 0px;
-  margin-bottom: auto;
-}
 
 .date {
   color: #595959;

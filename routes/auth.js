@@ -16,7 +16,7 @@ router.get(
   '/google/callback',
   passport.authenticate('google', {
     successRedirect: '/profile/login',
-    failureRedirect: '/auth/spotify',
+    failureRedirect: '/auth/google',
   })
 )
 

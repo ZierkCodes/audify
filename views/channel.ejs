@@ -3,22 +3,14 @@
     <%- include('./partials/header.ejs') %>
     <section class="chatroom_container">
         <div id="channel" data-channel="<%= channel %>" hidden></div>
-        <h3 class="channel_name">#<%= channel %> - Most Popular</h3>
-        <section class="most_popular">
-            <div class="popular_song">
-                <img class="album_image" src="" alt="">
-                <i class="fa fa-heart fe-stack-1x"></i>
-                <p class="votes">votes</p>
-                <p class="song_name"></p>
+        <h3 class="channel_name">#<%= channel %></h3>
 
-            </div>
-        </section>
         <div id="chatroom">
             <div class="flex">
                 <% chats.forEach(c => { %>
                     <div class="message_output">
                         <div class="avatar">
-                            <img id="avatarPhoto" height="30" src="<%= c.avatar %>" alt="">
+                            <img class="avatarPhoto" height="30" src="<%= c.avatar %>" alt="">
                         </div>
                         <div class="content">
                             <p class="username"><%= c.username %> <small class="date"><%=` ${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][c.createdAt.getMonth()]} ${c.createdAt.getDate()}, ${c.createdAt.getFullYear()} ${c.createdAt.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit'})} `%></small></p>

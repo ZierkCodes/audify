@@ -12,6 +12,10 @@
     border-top: solid 1px #D8D9DB;
 }
 
+.channel_item:last-child {
+    border-bottom: 1px solid #D8D9DB;
+}
+
 .channel_item p {
     align-content: center;
     margin-left: 10px;

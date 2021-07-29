@@ -13,9 +13,11 @@ input::placeholder {
 }
 
 input:focus {
-    border: 3px solid #4bbe43;
+    border: 3px solid #1D88D2;
     outline: none;
-    box-shadow: 0 10px 20px 0 rgb(216, 255, 213);
+    box-shadow: 0 10px 20px 0 #acc1d4;
+    outline: 3px dashed #96A0AA;
+    outline-offset: 3px;
 }
 
 input.username{

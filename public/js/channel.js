@@ -46,7 +46,7 @@ socket.on("new_message", (data) => {
     console.log(data)
     newMessage.innerHTML = `
         <div class="avatar">
-            <img id="avatarPhoto" height="30" src="${data.avatar}" alt="">
+            <img class="avatarPhoto" height="30" src="${data.avatar}" alt="">
         </div>
         <div class="content">
             <p class="username">${data.username} <small class="date">a few seconds ago</small></p>

@@ -39,14 +39,7 @@ div.flex {
     flex: 1;
 }
 
-div.message_output {
-    display: flex;
-    padding: 0px;
-    height: auto;
-    width: 100%;
-    margin: 0px;
-    border-top: 1px solid #f0f0f0;
-}
+
 
 
 
