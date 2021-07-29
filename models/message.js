@@ -11,6 +11,7 @@ const reactionSchema = new Schema({
 })
 
 const messageSchema = new Schema({
+    profile: {type: Schema.Types.ObjectId, ref: "Profile"},
     username: String,
     avatar: String, 
     message: String,

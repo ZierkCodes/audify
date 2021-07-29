@@ -19,10 +19,10 @@ div.header {
 
 nav.nav {
     color: #E32226;
-    width: 150px;
+    width: 240px;
     height: 50px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -40,4 +40,12 @@ nav.nav {
 
 .fa-stack.active .fa.fa-circle {
     color: #FFF;
+}
+
+header button {
+    height: 40px;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 0px 20px;
+    margin-left: 8px
 }

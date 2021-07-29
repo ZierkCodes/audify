@@ -1,0 +1,60 @@
+<%- include('./partials/head.ejs') %>
+    <body>
+        <%- include('./partials/header.ejs') %>
+        <section class="profile-section">
+            <img class="profile-image" src="<%= profile.avatar %>" />
+
+            <section class="profile-username">
+                <h3><%= profile.username %></h3>
+                
+                <% if (profile.branch === 'airforce') { %>
+                    <p class="branch air-force">Air Force
+                        <% if (profile.verified_military) { %>
+                            <span class="verified fa-stack fa-lg">
+                                <i class="fa fa-certificate fa-stack-2x"></i>
+                                <i class="fa fa-check fa-stack-1x fa-inverse"></i>
+                            </span> 
+                        <% } %>
+                    </p>
+                <% } else if (profile.branch === 'navy') { %>
+                    <p class="branch navy">Navy
+                        <% if (profile.verified_military) { %>
+                            <span class="verified fa-stack fa-lg">
+                                <i class="fa fa-certificate fa-stack-2x"></i>
+                                <i class="fa fa-check fa-stack-1x fa-inverse"></i>
+                            </span> 
+                        <% } %>
+                    </p>
+                <% } else if (profile.branch === 'army') { %>
+                    <p class="branch army">Army
+                        <% if (profile.verified_military) { %>
+                            <span class="verified fa-stack fa-lg">
+                                <i class="fa fa-certificate fa-stack-2x"></i>
+                                <i class="fa fa-check fa-stack-1x fa-inverse"></i>
+                            </span> 
+                        <% } %>
+                    </p>
+                <% } else if (profile.branch === 'usmc') { %>
+                    <p class="branch usmc">USMC
+                        <% if (profile.verified_military) { %>
+                            <span class="verified fa-stack fa-lg">
+                                <i class="fa fa-certificate fa-stack-2x"></i>
+                                <i class="fa fa-check fa-stack-1x fa-inverse"></i>
+                            </span> 
+                        <% } %>
+                    </p>
+                <% } else if (profile.branch === 'patriot') { %>
+                    <p class="branch patriot">Patriot</p>
+                <% } %>
+            </section>            
+            
+           <section id="profile-about">
+               <p class="about">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tristique ultricies dictum. Fusce sem lorem, tristique sit amet urna ac, mollis fringilla ligula. Mauris mattis rutrum velit, consectetur sodales dolor consequat in. Fusce tristique erat a augue rutrum, nec fermentum arcu lobortis. Etiam tortor mi, mattis ac ultrices non, efficitur eget dui. Suspendisse et diam quis nibh ultricies sodales et in odio. Praesent eu nisl mi. Praesent in fermentum mauris. Pellentesque enim turpis, vestibulum eget augue eu, posuere imperdiet turpis.</p>
+           </section>
+            
+            
+            
+            <button class="medium">Add Friend</button>
+        </section>
+    </body>
+</html>

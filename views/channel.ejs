@@ -7,7 +7,8 @@
     <section id="chat">
         <section id="chatroom">
             <% chats.forEach(msg => { %>
-                <div class="message_output">
+                <% let url = `/profile/${msg.profile}` %> 
+                <div onclick="window.location.href='<%= url %>'" class="message_output">
                     <div class="avatar">
                         <img class="avatarPhoto" src="<%= msg.avatar %>" alt="Profile Image" />
                     </div>

@@ -1,15 +1,8 @@
 <header>
     <div class="header">
-      <img src="<%= user.profile.avatar %>" alt="" class="header" style="width: 50px; height: 50px; border-radius: 50px;">
+      <img src="<%= user.profile.avatar %>" alt="" class="header" style="width: 50px; height: 50px; border-radius: 50px;" href="/profile/:id">
       <nav class="nav">
-        <% if (activeNav === 'music') { %>
-          <span class="fa-stack active fa-lg">
-        <% } else { %>
-          <span class="fa-stack fa-lg">
-        <% } %> 
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-music fa-stack-1x fa-inverse"></i>
-        </span>
+        <span>
         <% if (activeNav === 'friends') { %>
           <span class="fa-stack active fa-lg">
         <% } else { %>
@@ -26,6 +19,8 @@
           <i class="fa fa-circle fa-stack-2x"></i>
           <i class="fa fa-hashtag fa-stack-1x fa-inverse"></i>
         </span>
+        <button><a href="/"></a>Sign Out</button>
       </nav>
+
     </div>
 </header>

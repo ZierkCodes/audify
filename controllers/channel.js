@@ -17,7 +17,7 @@ function chatRoom(req, res) {
         .limit(150)
         .then((chats) => {
           console.log("CHAT:")
-          console.log(req.params.channel)
+          console.log(chats)
             res.render('channel', {
                 title: "Chat Room",
                 user: req.user,
@@ -33,7 +33,13 @@ function chatRoom(req, res) {
 function postChat(req, res) {
   console.log("controllers/channel.js >> Creating New Message with Body:")
   console.log(req.body)
-  let message = new Message(req.body)
+  let message = new Message({
+    profile: req.user.profile._id,
+    avatar: req.body.avatar,
+    username: req.body.username,
+    message: req.body.message,
+    channel: req.body.channel
+  })
       message.save().then((msg) => {
         console.log("ADDED MESSAGE:")
         console.log(msg)

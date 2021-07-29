@@ -6,7 +6,7 @@ const router = Router()
 
 // router.get('/', isLoggedIn, indexCtrl.index)
 router.get('/', (req, res, next) => {
-  res.render('index', {title: "Audify"})
+  res.render('index', {title: "VetNet"})
 })
 
 router.get('/welcome', (req, res, next) => {

@@ -6,7 +6,8 @@ import axios from 'axios'
 export {
     getUsername,
     setUsername,
-    verify
+    verify,
+    getProfile
 }
 
 function getUsername(req, res) {
@@ -37,6 +38,21 @@ function setUsername(req, res) {
         res.redirect('/channels')
     })
 
+}
+
+function getProfile(req, res) {
+    Profile.findOne({_id: req.params.id})
+    .then((response) => {
+        res.render('user_profile.ejs', {
+            activeNav: 'none',
+            title: 'Your Profile',
+            profile: response,
+            user: req.user
+          })
+    })
+    .catch((error) => {
+        res.send(error)
+    })
 }
 
 function verify(req, res, next) {

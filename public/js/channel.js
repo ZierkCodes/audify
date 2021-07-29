@@ -100,6 +100,7 @@ message.addEventListener("keypress", (e) => {
             console.log(message.innerHTML.trim().length)
             console.log('============================')
             if(message.innerHTML.trim().length > 0) {
+                console.log("RUNNING!")
                 resize(maxHeight)
                 
 
