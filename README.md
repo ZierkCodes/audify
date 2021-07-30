@@ -20,6 +20,7 @@ VetNet included much of the original technical design, aside from a few differen
 
 VetNet was designed with a mobile-first approach in mind. Next steps include implementing Ionic to bring this app to native mobile platforms, which is why we started with a mobile web-app (as opposed to a desktop web-app). I also began to experiment with some accessibility features, such as large text, high contrasts, and focused outlines.
 
+<img src="https://i.imgur.com/iA9EmHK.pn" width="200">
 ![Homepage](https://i.imgur.com/iA9EmHK.png | width=200)
 ![Welcome](https://i.imgur.com/Gm1GpYn.png | width=200)
 ![Channels](https://i.imgur.com/KfoHhU3.png | width=200)
