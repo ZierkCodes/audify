@@ -127,7 +127,7 @@ io.on('connection', (socket) => {
         io.to(data.channel).emit('user-enter')
     })
     // When anyone 'leaves the room (navigates away from the page)', remove them from the list and play a sound
-    socket.on('disconnect', () => {
+    socket.on('disconnect', (data) => {
         console.log("IO.JS DELETE USER")
         delete chatters[socket.id]
         io.to(data.channel).emit('exit-user')
