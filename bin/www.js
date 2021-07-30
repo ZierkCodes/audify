@@ -88,7 +88,8 @@ io.on('connection', (socket) => {
         io.sockets.to(data.channel).emit('new_message', {
               message: data.message, 
               username: data.username,
-              avatar: data.avatar
+              avatar: data.avatar,
+              profile: data.profile
           })
       })
 })

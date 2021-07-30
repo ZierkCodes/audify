@@ -23,3 +23,45 @@ h3.channel_name {
   justify-content: flex-end;
   flex: 1;
 } */
+.message_output {
+  position: relative;
+}
+
+.message_output:hover > .message-menu {
+  color: #E32226;
+}
+
+.message-menu {
+  position: absolute;
+  top: calc(50% - 16px);
+  right: 25px;
+  color: #D8D9DB;
+}
+
+.message-menu-container {
+  position: absolute;
+  right: 20px;
+  top: -12px;
+  display: none;
+  width: 110px;
+  font-size: 14px;
+  text-align: center;
+  background: #E32226;
+  color: #FFF;
+  padding: 10px;
+  border-radius: 3px;
+  box-shadow: 0 10px 20px 0 #a3a7ac;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.message-menu-container.showing {
+  display: block;
+}
+
+.message-menu-container a {
+  color: #FFF;
+}
+
+.message-menu-container:hover {
+  background: #ee3134;
+}

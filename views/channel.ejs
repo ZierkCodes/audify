@@ -3,19 +3,29 @@
     <%- include('./partials/header.ejs') %>
 
     <div id="channel" data-channel="<%= channel %>" hidden></div>
+    <div id="user" data-user="<%= user.profile._id %>" hidden></div>
     <h3 class="channel_name"># <%= channel %></h3>
     <section id="chat">
         <section id="chatroom">
             <% chats.forEach(msg => { %>
                 <% let url = `/profile/${msg.profile}` %> 
-                <div onclick="window.location.href='<%= url %>'" class="message_output">
-                    <div class="avatar">
+                <div class="message_output">
+                    <div class="avatar" onclick="window.location.href='<%= url %>'">
                         <img class="avatarPhoto" src="<%= msg.avatar %>" alt="Profile Image" />
                     </div>
                     <div class="content">
-                        <p class="username"><%= msg.username%> <small class="date"><%=` ${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][msg.createdAt.getMonth()]} ${msg.createdAt.getDate()}, ${msg.createdAt.getFullYear()} ${msg.createdAt.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit'})} `%></small></p>
+                        <p class="username"><span onclick="window.location.href='<%= url %>'"><%= msg.username%></span> <small class="date"><%=` ${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][msg.createdAt.getMonth()]} ${msg.createdAt.getDate()}, ${msg.createdAt.getFullYear()} ${msg.createdAt.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit'})} `%></small></p>
                         <p class="text"><%- msg.message %></p>
                     </div>
+
+                    <% if (msg.profile.toString() === user.profile._id.toString()) { %>
+                        <div class="message-menu">
+                            <i class="fas fa-ellipsis-v"></i>
+                            <div class="message-menu-container">
+                                <a href="/channel/remove/<%=channel%>/<%= msg._id %>">Delete Message</a>
+                            </div>
+                        </div>
+                    <% } %>
                 </div>
             <% }) %>
         </section>

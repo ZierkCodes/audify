@@ -4,7 +4,8 @@ import { Message } from '../models/message.js'
 
 export {
     chatRoom,
-    postChat
+    postChat,
+    removeMessage
 }
 
 function chatRoom(req, res) {
@@ -44,5 +45,15 @@ function postChat(req, res) {
         console.log("ADDED MESSAGE:")
         console.log(msg)
         res.status(201).send("Added")
+  })
+}
+
+function removeMessage(req, res, next) {
+  Message.remove({_id: req.params.id}, function(err) {
+    if(!err) {
+      res.redirect(`/channel/${req.params.channel}`)
+    } else {
+      res.render('error', {activeNav: 'none', error: err})
+    }
   })
 }

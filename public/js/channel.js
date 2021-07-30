@@ -10,7 +10,9 @@ let avatar = document.getElementById("avatar");
 let isTyping = document.getElementById("isTyping");
 let chatters = document.getElementById("chatters");
 let channel = document.getElementById("channel").dataset.channel
+let user = document.getElementById("user").dataset.user
 let messageInput = document.querySelector(".message_input")
+let messageMenu = document.querySelectorAll('.message-menu')
 let maxHeight = 66;
 
 chatroom.scrollTop = chatroom.scrollHeight
@@ -48,15 +50,35 @@ socket.on("new_message", (data) => {
     let newMessage = document.createElement('div')
     newMessage.classList.add("message_output")
     console.log(data)
-    newMessage.innerHTML = `
-        <div class="avatar">
-            <img class="avatarPhoto" height="30" src="${data.avatar}" alt="">
-        </div>
-        <div class="content">
-            <p class="username">${data.username} <small class="date">a few seconds ago</small></p>
-            <p class="text">${data.message}</p>
-        </div>
-    `
+    console.log(user)
+    if(user === data.profile) {
+        newMessage.innerHTML = `
+            <div class="avatar">
+                <img class="avatarPhoto" height="30" src="${data.avatar}" alt="">
+            </div>
+            <div class="content">
+                <p class="username">${data.username} <small class="date">a few seconds ago</small></p>
+                <p class="text">${data.message}</p>
+            </div>
+            <div class="message-menu">
+                <i class="fas fa-ellipsis-v"></i>
+                <div class="message-menu-container">
+                    <a href="#">Delete Message</a>
+                </div>
+            </div>
+            `
+    } else {
+        newMessage.innerHTML = `
+            <div class="avatar">
+                <img class="avatarPhoto" height="30" src="${data.avatar}" alt="">
+            </div>
+            <div class="content">
+                <p class="username">${data.username} <small class="date">a few seconds ago</small></p>
+                <p class="text">${data.message}</p>
+            </div>
+            `
+    }
+    
     chatroom.append(newMessage)
     chatroom.scrollTo(0, chatroom.scrollHeight)
     console.log("CHANNEL.JS SOCKET NEW MESSAGE")
@@ -108,6 +130,7 @@ message.addEventListener("keypress", (e) => {
                     username: username.value,
                     message: message.innerHTML.replaceAll({"\n": "<br />"}),
                     avatar: avatar.value,
+                    profile: user,
                     channel: channel
                 })
     
@@ -209,6 +232,27 @@ function resize (maxHeight) {
     // message.scrollTop = message.scrollHeight
     message_container.scrollTop = message_container.scrollHeight
 }
+
+
+messageMenu.forEach((menu) => {
+    menu.addEventListener('click', (e) => {
+        
+        if(document.querySelector('.showing')) {
+            document.querySelector('.showing').classList.remove('showing')
+        }
+        let deleteMessageBtn = menu.querySelector('.message-menu-container')
+        deleteMessageBtn.classList.add('showing')
+    })
+})
+
+window.addEventListener('click', function(e) {
+    console.log(e.target)
+    const select = document.querySelector('.showing')
+    console.log(select)
+    if (select !== null && e.target.className !== 'fas fa-ellipsis-v' && e.target.className !== 'message-menu-container showing' && e.target.tagName.toLowerCase() !== 'a') {
+        select.classList.remove('showing');
+    }
+});
 
 
 String.prototype.replaceAll = function(obj) {
