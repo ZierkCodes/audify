@@ -1,13 +1,26 @@
 <%- include('./partials/head.ejs') %>
     <body>
         <%- include('./partials/header.ejs') %>
-        <form method="POST" action="/profile/verify">
+        <form id="verification" method="POST" action="/profile/verify">
             <h2>Verify Your Veteran Status</h2>
-            <p>This form is secured, with verfication provided by Veteran Affairs.</p>
-            <img class="va-logo" src="/images/va-logo.png" />
             <div>
-                <input class="username" id="username" name="username" value="<%= user.profile.username %>" type="text" placeholder="Enter Username">
+                <label>First Name</label>
+                <input id="first_name" name="first_name" type="text" placeholder="First Name">
             </div>
+            <div>
+                <label>Last Name</label>
+                <input id="last_name" name="last_name" type="text" placeholder="Last Name">
+            </div>
+            <div>
+                <label>Date of Birth</label>
+                <input id="dob" name="dob" type="text" placeholder="YYYY-MM-DD" data-inputmask="'mask': '9999-99-99'">
+            </div>
+            <div>
+                <label>Social Security Number</label>
+                <input id="ssn" type="text" placeholder="XXX-XX-XXXX" maxlength="11">
+                <input id="hidden_ssn" name="ssn" type="text" hidden />
+            </div>
+            <button type="submit">Submit</button>
         </form>
 
     <!-- <form method="POST" action="/profile/verify">
@@ -15,7 +28,10 @@
         <input type="text" name="last_name" placeholder="Last Name" />
         <input type="text" name="dob" placeholder="YYYY-MM-DD" />
         <input type="text" name="social" placeholder="Social Security Number" />
-        <button type="submit">Submit</button>
+        
     </form> -->
+
+    <!-- /^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/ -->
+    <script src="/js/verification.js"></script>
 </body>
 </html>

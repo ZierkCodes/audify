@@ -1,3 +1,11 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+
+
+<%- include('./partials/head.ejs') %>
+    <body>
+        <%- include('./partials/header.ejs') %>
+        <section>
+            <h2>Sorry, we ran into an issue.</h2>
+            <p><%= error %></p>
+        </section>
+    </body>
+</html>

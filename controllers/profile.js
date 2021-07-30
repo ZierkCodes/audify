@@ -21,7 +21,7 @@ function getUsername(req, res) {
     if(req.user.profile._id) {
         Profile.findOne({_id: req.user.profile._id}, (err, doc) => {
             if(err) {
-                console.log(err)
+                res.render('error', {activeNav: 'none', error: err})
             }
     
             if(doc.username) {
@@ -36,7 +36,7 @@ function getUsername(req, res) {
 function setUsername(req, res) {
     Profile.findOneAndUpdate({_id: req.user.profile._id}, {$set: {username: req.body.username, branch: req.body.branch}}, {new: true}, (err, doc) => {
         if(err) {
-            console.log(err)
+            res.render('error', {activeNav: 'none', error: err})
         }
 
         console.log(doc)
@@ -56,7 +56,7 @@ function getProfile(req, res) {
           })
     })
     .catch((error) => {
-        res.send(error)
+        res.render('error', {activeNav: 'none', error: error})
     })
 }
 
@@ -70,6 +70,9 @@ function editProfile(req, res) {
             user: req.user
         })
     })
+    .catch((error) => {
+        res.render('error', {activeNav: 'none', error: error})
+    })
 }
 
 function updateProfile(req, res) {
@@ -78,7 +81,7 @@ function updateProfile(req, res) {
         'branch': req.body.branch,
         'about': req.body.about
     }}, {new: true}, (error, results) => {
-        if(error) { console.log(error) }
+        if(error) { res.render('error', {activeNav: 'none', error: error}) }
         res.redirect(`/profile/${req.user.profile._id}`)
     })
 }
@@ -92,7 +95,7 @@ function verify(req, res, next) {
     }
 
     let data = {
-        'ssn': req.body.social,
+        'ssn': req.body.ssn,
         'last_name': req.body.last_name,
         'first_name': req.body.first_name,
         'birth_date': req.body.dob
@@ -103,13 +106,23 @@ function verify(req, res, next) {
         console.log(response)
         // res.status(200).json(response.data)
         if(response.data.veteran_status === 'confirmed') {
+            Profile.findOneAndUpdate({'_id': req.user.profile._id}, {$set: {
+                'verified_military': true
+            }}, {new: true}, (error, result) => {
+                if(error) {
+                    res.render('error', {activeNav: 'none', error: error})
+                } else {
+                    res.redirect(`/profile/${req.user.profile._id}`)
+                }
+            })
             // Update User!
+            // Update Profile with Verified Status
         } else {
             // Redirect to Profile Page and Dispaly Error
+            res.render('error', {activeNav: 'none', error: 'We could not verify your status at this time.'})
         }
     })
     .catch((error) => {
-        console.log(error)
-        res.json(error)
+        res.render('error', {activeNav: 'none', error: error})
     })
 }

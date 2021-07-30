@@ -21,7 +21,8 @@ input:focus {
     outline-offset: 3px;
 }
 
-input.username{
+input.username,
+input {
     height: 60px;
     font-size: 24px;
     text-align: center;
@@ -90,4 +91,33 @@ form h2 {
 
 #edit-profile-form .custom-select-wrapper {
     height: auto;
+}
+
+#verification {
+    margin: 40px;
+}
+
+#verification button {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 20px;
+}
+
+form label {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    display: none;
+    appearance: none;
+}
+
+input[type=number] {
+    appearance: textfield;
 }
