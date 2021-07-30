@@ -46,7 +46,7 @@
  
    server = https.createServer(options, app)
    const io = new Server(server)
-   io('https://vetnet-gz.herokuapp.com/', {secure: true})
+  //  io('https://vetnet-gz.herokuapp.com/', {secure: true})
    let chatters = {}
 
 
