@@ -1,4 +1,4 @@
-const socket = io('ws://vetnet-gz.herokuapp.com/')
+const socket = io('https://vetnet-gz.herokuapp.com/')
 
 
 let message = document.getElementById("message");
