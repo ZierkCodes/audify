@@ -8,7 +8,6 @@ let send_message = document.getElementById("send_message");
 let chatroom = document.getElementById("chatroom");
 let avatar = document.getElementById("avatar");
 let isTyping = document.getElementById("isTyping");
-let chatters = document.getElementById("chatters");
 let channel = document.getElementById("channel").dataset.channel
 let user = document.getElementById("user").dataset.user
 let messageInput = document.querySelector(".message_input")
@@ -33,12 +32,6 @@ socket.on("user-enter", () => {
 socket.on("user-exit", ({channel: channel}) => {
     console.log("USER EXIT")
 });
-
-socket.on("update-chatter-list", (data) => {
-    console.log("CHANNEL.JS SOCKET UPDATE CHATTER LIST")
-    let chatterList = "<li>" + data.join("</li><li>") + "</li>"
-    chatters.innerHTML = chatterList
-})
 
 socket.on("typing", (data) => {
     console.log("CHANNEL.JS SOCKET TYPING")
