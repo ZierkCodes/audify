@@ -1,0 +1,80 @@
+<%- include('./partials/head.ejs') %>
+    <body>
+        <%- include('./partials/header.ejs') %>
+        <section class="profile-section">
+            <section class="profile-edit">
+                <form id="edit-profile-form" method="POST" action="/profile/update?_method=PUT">
+                    <h2>Edit Profile</h2>
+
+                    <div>
+                        <input class="username" id="username" name="username" value="<%= user.profile.username %>" type="text" placeholder="Enter Username">
+                    </div>
+
+                    <div class="custom-select-wrapper">
+                        <div class="custom-select">
+                            <div class="custom-select__trigger">
+                                <span class="spacer"></span>
+                                <% if (user.profile.branch === 'usmc') { %>
+                                    <span id="selected-option" class="filled">Marine Corps</span>
+                                <% } else if (user.profile.branch === 'navy') { %>
+                                    <span id="selected-option" class="filled">Navy</span>
+                                <% } else if (user.profile.branch === 'army') { %>
+                                    <span id="selected-option" class="filled">Army</span>
+                                <% } else if (user.profile.branch === 'air-force') { %>
+                                    <span id="selected-option" class="filled">Air Force</span>
+                                <% } else { %>
+                                    <span id="selected-option" class="filled">I am not a veteran.</span>
+                                <% } %>
+                                
+                                <i id="icon" class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="custom-options">
+                                <% if (user.profile.branch === 'usmc') { %>
+                                <span class="custom-option selected" data-branch="usmc">Marine Corps</span>
+                                <span class="custom-option" data-branch="navy">Navy</span>
+                                <span class="custom-option" data-branch="army">Army</span>
+                                <span class="custom-option" data-branch="air-force">Air Force</span>
+                                <span class="custom-option" data-branch="patriot">I am not a veteran.</span>
+                                <% } else if (user.profile.branch === 'navy') { %>
+                                <span class="custom-option" data-branch="usmc">Marine Corps</span>
+                                <span class="custom-option selected" data-branch="navy">Navy</span>
+                                <span class="custom-option" data-branch="army">Army</span>
+                                <span class="custom-option" data-branch="air-force">Air Force</span>
+                                <span class="custom-option" data-branch="patriot">I am not a veteran.</span>
+                                <% } else if (user.profile.branch === 'army') { %>
+                                <span class="custom-option" data-branch="usmc">Marine Corps</span>
+                                <span class="custom-option" data-branch="navy">Navy</span>
+                                <span class="custom-option selected" data-branch="army">Army</span>
+                                <span class="custom-option" data-branch="air-force">Air Force</span>
+                                <span class="custom-option" data-branch="patriot">I am not a veteran.</span>
+                                <% } else if (user.profile.branch === 'air-force') { %>
+                                <span class="custom-option" data-branch="usmc">Marine Corps</span>
+                                <span class="custom-option" data-branch="navy">Navy</span>
+                                <span class="custom-option" data-branch="army">Army</span>
+                                <span class="custom-option selected" data-branch="air-force">Air Force</span>
+                                <span class="custom-option" data-branch="patriot">I am not a veteran.</span>
+                                <% } else { %>
+                                <span class="custom-option" data-branch="usmc">Marine Corps</span>
+                                <span class="custom-option" data-branch="navy">Navy</span>
+                                <span class="custom-option" data-branch="army">Army</span>
+                                <span class="custom-option" data-branch="air-force">Air Force</span>
+                                <span class="custom-option selected" data-branch="patriot">I am not a veteran.</span>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <input id="branch" type="text" name="branch" hidden />
+
+                    <div>
+                        <textarea name="about" placeholder="Introduce yourself!"><%= user.profile.about %></textarea>
+                    </div>
+                  
+                  <button class="medium">Save Changes</button>
+                </form>
+            </section>            
+        </section>
+        <script type="text/javascript" src="/js/welcome.js"></script>
+    </body>
+</html>

@@ -10,12 +10,16 @@ router.get('/login', isLoggedIn, profileCtrl.getUsername)
 router.post('/set', isLoggedIn, profileCtrl.setUsername)
 
 router.get('/verify', isLoggedIn, (req, res, next) => {
-  res.render('verify.ejs')
+  res.render('verify.ejs', {activeNav: 'none'})
 })
 
 router.post('/verify', isLoggedIn, profileCtrl.verify)
-
+router.get('/edit', isLoggedIn, profileCtrl.editProfile)
+router.put('/update', isLoggedIn, profileCtrl.updateProfile)
 router.get('/:id', isLoggedIn, profileCtrl.getProfile)
+
+// router.get('/edit', isLoggedIn, profileCtrl.editProfile)
+
 
 // router.put('/username')
 function isLoggedIn(req, res, next) {

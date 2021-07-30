@@ -49,12 +49,15 @@
             </section>            
             
            <section id="profile-about">
-               <p class="about">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tristique ultricies dictum. Fusce sem lorem, tristique sit amet urna ac, mollis fringilla ligula. Mauris mattis rutrum velit, consectetur sodales dolor consequat in. Fusce tristique erat a augue rutrum, nec fermentum arcu lobortis. Etiam tortor mi, mattis ac ultrices non, efficitur eget dui. Suspendisse et diam quis nibh ultricies sodales et in odio. Praesent eu nisl mi. Praesent in fermentum mauris. Pellentesque enim turpis, vestibulum eget augue eu, posuere imperdiet turpis.</p>
+               <p class="about"><%= user.profile.about %></p>
            </section>
-            
-            
-            
-            <button class="medium">Add Friend</button>
+
+            <% if (profile._id.toString() === user.profile._id.toString()) { %>
+                <button onclick="window.location.href='/profile/edit'" class="medium">Edit Profile</button>
+            <% } else {%>
+                <button class="medium">Add Friend</button>
+            <% } %>
+
         </section>
     </body>
 </html>

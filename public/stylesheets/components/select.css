@@ -35,6 +35,11 @@
     z-index: 100;
 }
 
+.custom-select__trigger.focused {
+    outline: 3px dashed #96A0AA;
+    outline-offset: 3px;
+}
+
 .custom-select__trigger .fas {
     color: #E32226;
 }
@@ -80,6 +85,97 @@
 }
 
 #selected-option.filled {
+    font-weight: 700;
+    color: #000;
+}
+/* 
+.profile-edit .custom-options {
+    bottom: 0;
+    top: 110%;
+    left: 0;
+    right: 0;
+} */
+.profile-edit .custom-select-wrapper {
+    position: relative;
+    user-select: none;
+    width: 100%;
+}
+.profile-edit .custom-select-wrapper .custom-select {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    /* border: 3px solid #1D88D2; */
+    border-radius: 5px; 
+    color: #000;
+    margin-bottom: 15px;
+    font-weight: 500;
+    
+}
+.profile-edit .custom-select-wrapper .custom-select .custom-select__trigger {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-family: 'Open Sans', sans-serif;
+    justify-content: space-between;
+    padding: 0 22px;
+    height: 60px;
+    font-size: 24px;
+    text-align: center;
+    color: #96A0AA;
+    height: 60px;
+    line-height: 60px;
+    background: #ffffff;
+    cursor: pointer;
+    border: 3px solid #1D88D2;
+    border-radius: 5px;
+    z-index: 100;
+}
+
+.profile-edit .custom-select-wrapper .custom-select .custom-select__trigger .fas {
+    color: #E32226;
+}
+.profile-edit .custom-select-wrapper .custom-select .custom-options {
+    position: absolute;
+    display: block;
+    bottom: auto;
+    top: 110%;
+    left: 0;
+    right: 0;
+    border: 3px solid #00387D;
+    border-radius: 5px;
+    background: #fff;
+    transition: all 0.5s;
+    font-family: 'Open Sans', sans-serif;
+    box-shadow: 0 10px 10px 0 rgba(172, 193, 212, 0.7);
+    z-index: 500 !important;
+}
+.profile-edit .custom-select-wrapper .custom-select .custom-select.open .custom-options {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: all !important;
+}
+.profile-edit .custom-select-wrapper .custom-select .custom-options .custom-option {
+    position: relative;
+    display: block;
+    padding: 0 22px 0 22px;
+    font-size: 22px;
+    color: #3b3b3b;
+    line-height: 60px;
+    cursor: pointer;
+    transition: all 0.5s;
+    font-weight: 700;
+}
+.profile-edit .custom-select-wrapper .custom-select .custom-options .custom-option:hover {
+    cursor: pointer;
+    background-color: #eaebee;
+}
+.profile-edit .custom-select-wrapper .custom-select .custom-options .custom-option.selected {
+    color: #ffffff;
+    background-color: #00387D;
+}
+
+.profile-edit .custom-select-wrapper .custom-select .custom-select__trigger #selected-option.filled {
     font-weight: 700;
     color: #000;
 }

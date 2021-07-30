@@ -1,13 +1,18 @@
 import { Profile } from '../models/profile.js'
 import { User } from '../models/user.js'
 import passport from 'passport'
+import mongoose from 'mongoose'
 import axios from 'axios'
+
+const ObjectId = mongoose.Types.ObjectId
 
 export {
     getUsername,
     setUsername,
     verify,
-    getProfile
+    getProfile,
+    editProfile,
+    updateProfile
 }
 
 function getUsername(req, res) {
@@ -52,6 +57,29 @@ function getProfile(req, res) {
     })
     .catch((error) => {
         res.send(error)
+    })
+}
+
+function editProfile(req, res) {
+    Profile.findById(req.user.profile._id)
+    .then((response) => {
+        res.render('edit_profile', {
+            activeNav: 'none',
+            title: 'Edit Your Profile',
+            profile: response,
+            user: req.user
+        })
+    })
+}
+
+function updateProfile(req, res) {
+    Profile.findOneAndUpdate({'_id': req.user.profile._id}, {$set: {
+        'username': req.body.username,
+        'branch': req.body.branch,
+        'about': req.body.about
+    }}, {new: true}, (error, results) => {
+        if(error) { console.log(error) }
+        res.redirect(`/profile/${req.user.profile._id}`)
     })
 }
 

@@ -15,6 +15,7 @@
 @import url('./components/chatbox.css');
 @import url('./components/select.css');
 @import url('./components/profile.css');
+@import url('./layout.css');
 
 html {
   background: url('../images/61025b686e91d.jpeg') no-repeat center center fixed;

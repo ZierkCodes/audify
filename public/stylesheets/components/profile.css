@@ -4,6 +4,7 @@
     flex-direction: column;
     align-items: flex-start;
     overflow: scroll;
+    height: calc(100vh - 86px - 40px);
     max-height: calc(100vh - 86px - 40px);
 }
 

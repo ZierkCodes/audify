@@ -6,6 +6,7 @@ header {
 img.header {
     margin: 15px;
     border: 3px solid #FFF;
+    cursor: pointer;
 }
 
 div.header {
@@ -48,4 +49,72 @@ header button {
     font-weight: 700;
     padding: 0px 20px;
     margin-left: 8px
+}
+
+#settings {
+    position: absolute;
+    width: 100%;
+    top: 86px;
+    z-index: 1000 !important;
+    background: #0f0f13;
+    display: none;
+    pointer-events: none;
+}
+
+#settings::after {
+    bottom: 100%;
+	left: 10%;
+	border: solid transparent;
+	content: "";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(136, 183, 213, 0);
+	border-bottom-color: #0f0f13;
+	border-width: 6px;
+	margin-left: -6px;
+}
+
+.menu-button {
+    font-size: 14px;
+    padding: 5px 20px;
+    border-radius: 5px;
+}
+
+#settings.open {
+    z-index: 1000 !important;
+    display: block;
+    pointer-events: all;
+}
+
+#settings ul {
+    margin: 0;
+    padding: 0;
+}
+
+#settings ul li {
+    list-style-type: none;
+    font-family: 'Open Sans', sans-serif;
+    color: #FFF;
+}
+
+#settings ul li {
+    padding: 20px;
+    margin: 0;
+    border-bottom: 1px solid #19191f
+}
+
+#settings ul li:last-child {
+    border-bottom: none;
+}
+
+#settings ul li:hover {
+    cursor: pointer;
+    background: #E32226;
+    transition: all 0.3s;
+}
+
+#settings ul li a {
+    color: #FFF;
 }
